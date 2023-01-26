@@ -22,9 +22,8 @@ class Program
             //Jounral entry--------------------
             if (select == 1)
             {
-                PromptGen generate = new PromptGen();
-                generate.GenPrompt();
-                Console.WriteLine("Jounral Entry");
+                Entry newEntry = new Entry();
+                newEntry.JournalEntry();
                 select = null;
             }
 
