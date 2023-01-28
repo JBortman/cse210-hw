@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        string date = DateTime.Now.ToString("MM/dd/yyyy");
+        List<string> _entries = new List<string> { };
 
         //Initial menu options--------------------
         int? select = null;
@@ -23,14 +25,19 @@ class Program
             if (select == 1)
             {
                 Entry newEntry = new Entry();
-                newEntry.JournalEntry();
+                PromptGen promptEntry = new PromptGen();
+                string prompt = promptEntry.GenPrompt();
+                string entry = newEntry.JournalEntry();
+                _entries.Add($"{date} - {prompt}: {entry}");
                 select = null;
             }
 
             else if (select == 2)
             {
-                Console.WriteLine("Display");
-                select = null;
+                foreach (string i in _entries)
+                {
+                    Console.WriteLine(i);
+                }
             }
 
             else if (select == 3)
@@ -42,12 +49,13 @@ class Program
             else if (select == 4)
             {
                 Console.WriteLine("Save");
+
                 select = null;
             }
 
             else if (select == 5)
             {
-
+                Console.WriteLine("Program terminated. Thank you!");
             }
 
             //If input is under 1 or over 5--------------------
