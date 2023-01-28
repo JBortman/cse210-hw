@@ -34,6 +34,7 @@ class Program
                 select = null;
             }
 
+            //Display current journal--------------------
             else if (select == 2)
             {
                 foreach (string i in _entries)
@@ -42,6 +43,7 @@ class Program
                 }
             }
 
+            //Save the current journal to file--------------------
             else if (select == 3)
             {
                 SaveLoad load = new SaveLoad();
@@ -55,6 +57,7 @@ class Program
                 select = null;
             }
 
+            //Load previous journal--------------------
             else if (select == 4)
             {
                 SaveLoad nameFile = new SaveLoad();
@@ -68,6 +71,7 @@ class Program
                 select = null;
             }
 
+            //Clear option to remove all current journal entries--------------------
             else if (select == 5)
             {
                 string answer = "";
@@ -87,6 +91,7 @@ class Program
                 }
             }
 
+            //End current session-------------------
             else if (select == 6)
             {
                 Console.WriteLine("Program terminated. Thank you!");
