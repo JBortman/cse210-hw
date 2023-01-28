@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         string date = DateTime.Now.ToString("MM/dd/yyyy");
-        List<string> _entries = new List<string> { };
+        List<string> _entries = new List<string>();
 
         //Initial menu options--------------------
         int? select = null;
@@ -42,14 +42,27 @@ class Program
 
             else if (select == 3)
             {
+                SaveLoad load = new SaveLoad();
+                List<string> loadedList = load.LoadFile();
+                _entries.Clear();
+                foreach (string l in loadedList)
+                {
+                    _entries.Add(l);
+                }
                 Console.WriteLine("Load");
                 select = null;
             }
 
             else if (select == 4)
             {
-                Console.WriteLine("Save");
-
+                SaveLoad nameFile = new SaveLoad();
+                string name = nameFile.NameFile();
+                using (TextWriter tw = new StreamWriter(name))
+                {
+                    foreach (string s in _entries)
+                        tw.WriteLine(s);
+                }
+                Console.WriteLine($"Successfully saved {name}");
                 select = null;
             }
 
