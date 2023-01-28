@@ -19,8 +19,7 @@ public class PromptGen
         "Tough day huh? Tell me all about it.",
         "How are you REALLY doing today?",
         "What are you thinking about literally right now?",
-        "Why do you still write in your journal?"
-        };
+        "Why do you still write in your journal?" };
         Random _rnd = new Random();
         int _rngIndex = _rnd.Next(_prompts.Count);
         string _random = _prompts[_rngIndex];
