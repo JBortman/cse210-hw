@@ -5,19 +5,21 @@ class Program
     static void Main(string[] args)
     {
         string date = DateTime.Now.ToString("MM/dd/yyyy");
+        string time = DateTime.Now.ToString("hh:mm:ss tt");
         List<string> _entries = new List<string>();
 
         //Initial menu options--------------------
         int? select = null;
-        while (select != 5)
+        while (select != 6)
         {
             Console.WriteLine("");
             Console.WriteLine("Please select one of the following:");
             Console.WriteLine("1. New Journal Entry");
             Console.WriteLine("2. Display Current Entries");
-            Console.WriteLine("3. Load Previous File");
-            Console.WriteLine("4. Save Current File");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("3. Load Previous Journal");
+            Console.WriteLine("4. Save Current Journal");
+            Console.WriteLine("5. Clear Current Jounal");
+            Console.WriteLine("6. Quit");
             Console.Write("What would you like to do?: ");
             select = int.Parse(Console.ReadLine());
 
@@ -28,7 +30,7 @@ class Program
                 PromptGen promptEntry = new PromptGen();
                 string prompt = promptEntry.GenPrompt();
                 string entry = newEntry.JournalEntry();
-                _entries.Add($"{date} - {prompt}: {entry}");
+                _entries.Add($"{date} @ {time} - {prompt} > {entry}");
                 select = null;
             }
 
@@ -49,7 +51,7 @@ class Program
                 {
                     _entries.Add(l);
                 }
-                Console.WriteLine("Load");
+                Console.WriteLine("Journal loaded successfully");
                 select = null;
             }
 
@@ -68,10 +70,29 @@ class Program
 
             else if (select == 5)
             {
+                string answer = "";
+                Console.WriteLine("Are you sure you want to clear the current journal?");
+                Console.Write("This cannot be undone (yes/no)! ");
+                answer = Console.ReadLine();
+
+                if (answer == "yes")
+                {
+                    _entries.Clear();
+                    Console.WriteLine("Jounral has been cleared");
+                }
+
+                else
+                {
+                    Console.WriteLine("Journal has been kept");
+                }
+            }
+
+            else if (select == 6)
+            {
                 Console.WriteLine("Program terminated. Thank you!");
             }
 
-            //If input is under 1 or over 5--------------------
+            //If input is under 1 or over 6--------------------
             else
             {
                 Console.WriteLine("Invalid entry, please only enter a number between 1-5.");

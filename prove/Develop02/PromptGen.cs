@@ -24,7 +24,7 @@ public class PromptGen
         Random _rnd = new Random();
         int _rngIndex = _rnd.Next(_prompts.Count);
         string _random = _prompts[_rngIndex];
-        Console.WriteLine(_random);
+        Console.Write(_random);
         return _random;
     }
 

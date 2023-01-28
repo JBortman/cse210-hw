@@ -6,7 +6,7 @@ public class Entry
     public string JournalEntry()
     {
         PromptGen generate = new PromptGen();
-        Console.Write(">");
+        Console.Write(" > ");
         _userInput = Console.ReadLine();
         Console.WriteLine("Entry added");
         return _userInput;
