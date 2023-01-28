@@ -79,6 +79,7 @@ class Program
                 Console.Write("This cannot be undone (yes/no)! ");
                 answer = Console.ReadLine();
 
+                //Confirms to clear current entries or not-------------------
                 if (answer == "yes")
                 {
                     _entries.Clear();

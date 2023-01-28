@@ -10,6 +10,7 @@ public class PromptGen
         "How did I see the hand of the Lord in my life today?",
         "What was the strongest emotion I felt today?",
         "If I had one thing I could do over today, what would it be?",
+        //My prompts begin here
         "What did you do today?",
         "Pick a random scripture. What does it mean to you?",
         "If you're posterity saw this entry, what would you want them to know about you?",
