@@ -5,25 +5,44 @@ class Program
     static void Main(string[] args)
     {
         Scripture scrip = new Scripture();
+        Word check = new Word();
         string input = String.Empty;
         scrip.AddToList();
         scrip.FullScripture();
+        bool _check = false;
 
-        while (input != "quit")
+        while (_check == false)
         {
+            Console.WriteLine();
+            Console.WriteLine("Enter: Remove words");
+            Console.WriteLine("1. Resets all the words");
+            Console.WriteLine("2. View hidden words");
+            Console.WriteLine("3. Quit the program");
+            Console.Write("Please select an option: ");
+            input = Console.ReadLine();
             if (input == String.Empty)
             {
-                Console.WriteLine();
-                Console.WriteLine("Press enter to remove a word, or type quit to stop. ");
-                input = Console.ReadLine();
-                scrip.HideWord();
+                _check = scrip.HideWord();
             }
 
-            else
+            else if (input == "1")
             {
-                Console.WriteLine();
-                Console.Write("Please press enter or type quit. ");
-                input = Console.ReadLine();
+            scrip.Reset();
+            scrip.AddToList();
+            scrip.FullScripture();
+            check.ClearList();
+            input=String.Empty;
+            }
+
+            else if (input == "2")
+            {
+                check.HiddenList();
+                input=string.Empty;
+            }
+
+            else if (input == "3")
+            {
+                break;
             }
         }
     }
