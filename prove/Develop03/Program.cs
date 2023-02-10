@@ -11,6 +11,11 @@ class Program
         scrip.FullScripture();
         bool _check = false;
 
+        //Creativity & Exceeding requirements: 
+        // -Menu driven system
+        // -Added a reset feature to add all the words back
+        // -Display and counted number of hidden words, that also
+        //  resets when the reset feature is selected
         while (_check == false)
         {
             Console.WriteLine();
