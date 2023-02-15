@@ -4,11 +4,25 @@ public class Assignment
 private string _studentName;
 private string _topic;
 
-public void GetSummary(string name, string topic)
+public Assignment(string studentName, string topic)
 {
-    _studentName = name;
+    _studentName = studentName;
     _topic = topic;
-    Console.WriteLine($"{name} - {topic}");
+}
+
+public string GetName()
+{
+    return _studentName;
+}
+
+public string GetTopic()
+{
+    return _topic;
+}
+
+public string GetSummary()
+{
+    return $"{_studentName} - {_topic}";
 }
 
 }
