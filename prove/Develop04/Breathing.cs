@@ -1,18 +1,13 @@
 public class Breathing : Activity
 {
 
-    int _inTime;
-    int _outTime;
-    int _breaths;
+    private int _inTime;
+    private int _outTime;
+    private int _breaths;
     public Breathing(string activity) : base(activity)
     {
     }
 
-    public int GetBreaths()
-    {
-        _breaths = _activityTime / 10;
-        return _breaths;
-    }
 
     public void Begin()
     {
@@ -29,7 +24,7 @@ public class Breathing : Activity
             _seconds--;
         }
         Console.Clear();
-        GetBreaths();
+        _breaths = GetBreaths(_activityTime);
         while (_breaths > 0)
         {
             _inTime = 4;

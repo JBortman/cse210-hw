@@ -19,7 +19,6 @@ class Program
             input = Console.ReadLine();
             if (input == "1")
             {
-                Console.Clear();
                 Breathing breathe = new Breathing("Breathing");
                 breathe.StartMessage();
                 breathe.Description();
@@ -32,18 +31,17 @@ class Program
 
             else if (input == "2")
             {
-                Console.Clear();
-                Activity reflection = new Activity("Reflection");
-                reflection.StartMessage();
-                reflection.Description();
-                reflection.ActivityTime();
-                reflection.FinishMessage();
-                reflection.FinishTime();
+                Reflection reflect = new Reflection("Reflection");
+                reflect.StartMessage();
+                reflect.Description();
+                reflect.ActivityTime();
+                reflect.Think();
+                reflect.FinishMessage();
+                reflect.FinishTime();
             }
 
             else if (input == "3")
             {
-                Console.Clear();
                 Activity list = new Activity("List");
                 list.StartMessage();
                 list.Description();
