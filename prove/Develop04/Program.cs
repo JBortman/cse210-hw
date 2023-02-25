@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         string input = String.Empty;
-        while (input != "4")
+        while (input != "5")
         {
 
             Console.WriteLine("");
@@ -13,7 +13,8 @@ class Program
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Reflection Activity");
             Console.WriteLine("3. Listing Activity");
-            Console.WriteLine("4. Quit");
+            Console.WriteLine("4. Add Custom Prompt");
+            Console.WriteLine("5. Quit");
             Console.Write("Please make a selection (1-4): ");
 
             input = Console.ReadLine();
@@ -51,7 +52,14 @@ class Program
                 list.FinishTime();
             }
 
+            //Added the ability to add your own prompt to the existing list if desired
             else if (input == "4")
+            {
+                Activity prompt = new Activity("");
+                prompt.AddPrompt();
+            }
+
+            else if (input == "5")
             {
                 break;
             }

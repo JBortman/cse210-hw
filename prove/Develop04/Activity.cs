@@ -3,7 +3,7 @@ public class Activity
     protected string _activityTitle;
     protected int _activityTime;
     protected int _seconds;
-    protected int _promptNum;
+    private string _newPrompt;
     protected List<string> _genericPrompts = new List<string>{
         "When have you felt the Holy Ghost this month?",
         "Who have you helped this week?",
@@ -119,6 +119,22 @@ public class Activity
         Console.Write("Get ready! ");
         Timer(seconds);
         Console.Clear();
+    }
+
+    public void AddPrompt()
+    {
+        Console.Clear();
+        Console.Write("Please enter the prompt you would like to add: ");
+        _newPrompt = Console.ReadLine();
+        _genericPrompts.Add(_newPrompt);
+        Console.WriteLine("Prompt successfully added!");
+        Console.WriteLine("Current prompt list:");
+        foreach (string i in _genericPrompts)
+        {
+            Console.WriteLine(i);
+        }
+        Console.WriteLine("");
+
     }
 }
 

@@ -28,6 +28,8 @@ public class Listing : Activity
         }
 
         Console.WriteLine($"Time is up! You entered {_total} items!");
+
+        // Added the ability to view the answers along with the prompt.
         Console.Write("Would you like to view your answers (y/n)? ");
         string _confirm = Console.ReadLine();
         if (_confirm == "y" || _confirm == "Y")
