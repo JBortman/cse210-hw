@@ -11,7 +11,6 @@ public class Breathing : Activity
 
     public void Begin()
     {
-        Console.Clear();
         Console.Write("When you are ready, please press enter.");
         Console.ReadLine();
         Console.Write("Beginning in ");
@@ -24,7 +23,7 @@ public class Breathing : Activity
             _seconds--;
         }
         Console.Clear();
-        _breaths = GetBreaths(_activityTime);
+        _breaths = PromptNumber(_activityTime);
         while (_breaths > 0)
         {
             _inTime = 4;

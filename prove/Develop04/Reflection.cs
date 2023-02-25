@@ -17,12 +17,7 @@ public class Reflection : Activity
     public Reflection(string activity) : base(activity)
     {
     }
-    private int NumOfQuestions()
-    {
-        _questionAmount = _activityTime / 10;
-        return _questionAmount;
-
-    }
+    
     private void GetDeeperPrompt()
     {
         Random _ran = new Random();
@@ -33,21 +28,20 @@ public class Reflection : Activity
 
     public void Think()
     {
-        Console.Write("One moment please...");
-        Timer(3);
-        Console.Clear();
+        OneMoment(3);
         Console.WriteLine("Ponder an experience based on the following:");
+        Console.WriteLine("");
         Console.Write("---> ");
-        GetPrompt();
-        Console.Write("When you are ready, press enter to begin.");
+        Console.WriteLine("");
+        Console.WriteLine(GetPrompt());
+        Console.Write("Prepare your thoughts, and press enter to begin.");
         Console.ReadLine();
         ThinkActivity();
     }
 
     public void ThinkActivity()
     {
-        Console.Clear();
-        NumOfQuestions();
+        _questionAmount = PromptNumber(_activityTime);
         while (_questionAmount > 0)
         {
             GetDeeperPrompt();

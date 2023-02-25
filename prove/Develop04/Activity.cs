@@ -5,11 +5,11 @@ public class Activity
     protected int _seconds;
     protected int _promptNum;
     protected List<string> _genericPrompts = new List<string>{
-        "Prompt1",
-        "Prompt2",
-        "Prompt3",
-        "Prompt4",
-        "Prompt5"};
+        "When have you felt the Holy Ghost this month?",
+        "Who have you helped this week?",
+        "What missionary experiences have you had recently?",
+        "What did you do for your family this week?",
+        "Who helped YOU within the last month?"};
     public Activity(string activity)
     {
         _activityTitle = activity;
@@ -79,13 +79,12 @@ public class Activity
         }
     }
 
-    public void GetPrompt()
+    public string GetPrompt()
     {
         Random _ran = new Random();
         int _index = _ran.Next(_genericPrompts.Count);
         string _prompt = _genericPrompts[_index];
-        Console.WriteLine(_prompt);
-        Console.WriteLine("");
+        return _prompt;
     }
 
     public void Timer(int time)
@@ -109,11 +108,17 @@ public class Activity
         Console.WriteLine("");
     }
 
-    public int GetBreaths(int number)
+    public int PromptNumber(int number)
     {
         number = _activityTime / 10;
         return number;
     }
 
+    public void OneMoment(int seconds)
+    {
+        Console.Write("Get ready! ");
+        Timer(seconds);
+        Console.Clear();
+    }
 }
 
