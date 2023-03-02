@@ -4,6 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning05 World!");
+        List<Shape> _list = new List<Shape>{};
+
+        Square sq = new Square("black", 4);
+        _list.Add(sq);
+
     }
 }

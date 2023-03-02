@@ -1,11 +1,12 @@
 public class Shape {
     string _color;
 
-    public string GetColor(){
+    public string GetColor(string v)
+    {
         return _color;
     }
 
-    public void SetColor(string color){
+    public Shape(string color){
         _color = color;
     }
 
