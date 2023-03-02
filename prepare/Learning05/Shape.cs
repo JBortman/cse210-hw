@@ -1,7 +1,7 @@
 public class Shape {
     string _color;
 
-    public string GetColor(string v)
+    public string GetColor()
     {
         return _color;
     }
