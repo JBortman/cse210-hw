@@ -30,7 +30,14 @@ public class Checklist : Goal
     public override void ShowGoal(string[] line)
     {
         // Checklist goal format: 0 Goal Type, 1 Description, 2 PointValue, 3 InitialProgress, 4 CompleteProgress, 5 Bonus, 6 Completed?
-        Console.WriteLine($"{line[1]} - {line[2]} points - Progress: {line[3]}/{line[4]}");
+        if(line[3] == line[4])
+        {
+        Console.WriteLine($"{line[1]} - {line[2]} points - Progress: {line[3]}/{line[4]} - Complete!");
+        }
+
+        else{
+        Console.WriteLine($"{line[1]} - {line[2]} points - Progress: {line[3]}/{line[4]} - Incomplete");
+        }
     }
 
     public override int MarkProgress(List<string> list, int index)
@@ -64,7 +71,7 @@ public class Checklist : Goal
                 else if (_progressCheck == _progressFinish)
                 {
                     Console.WriteLine($"{_selSplit[1]} - Progress {_progressCheck}/{_selSplit[4]}");
-                    Console.WriteLine($"Goal completed! Great job! {_selSplit[5]} bonus points added.");
+                    Console.WriteLine($"Goal completed! Great job! {_pointValue} points added and {_selSplit[5]} bonus points added.");
                     _userPoints += _pointValue;
                     _userPoints += _bonus;
                     check = true;

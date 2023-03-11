@@ -1,4 +1,4 @@
 0
-Simple,Test simple,250,0,False
-Eternal,Test eternal,50,0,5,250
-Checklist,Test checklist,50,0,5,250,False
+Simple,Test 1,100,False
+Eternal,Test 2,100,0,3,0,300
+Checklist,Test 3,100,0,3,300,False

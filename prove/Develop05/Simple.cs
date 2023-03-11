@@ -44,40 +44,22 @@ public class Simple : Goal
             check = bool.Parse(_selSplit[3]);
             if (check == false)
             {
-                Console.WriteLine($"Current goal selected: {_selSplit[1]} - Not Complete Yet");
-                Console.WriteLine("1. Mark Complete");
-                Console.WriteLine("2. Cancel");
-                Console.Write("What would you like to do? ");
-                _answer = int.Parse(Console.ReadLine());
-                Console.WriteLine();
-                switch (_answer)
-                {
-                    case 1:
-                        _selSplit[3] = "True";
-                        Console.WriteLine($"Current goal selected: {_selSplit[1]} - Complete!");
-                        _userPoints += int.Parse(_selSplit[2]);
-                        Console.WriteLine($"{_selSplit[2]} points added to your score!");
-                        Console.Write("Press enter to continue");
-                        Console.ReadLine();
-                        break;
-
-                    case 2:
-                        Console.Clear();
-                        break;
-
-                    default:
-                        break;
-                }
-                _newString = $"{_selSplit[0]},{_selSplit[1]},{_selSplit[2]},{_selSplit[3]}";
-                list[index] = _newString;
+                _selSplit[3] = "True";
+                Console.WriteLine($"Current goal selected: {_selSplit[1]} - Complete!");
+                _userPoints += int.Parse(_selSplit[2]);
+                Console.WriteLine($"{_selSplit[2]} points added to your score!");
+                Console.Write("Press enter to continue");
+                Console.ReadLine();
             }
+
 
             else if (check == true)
             {
                 Console.WriteLine($"Current goal selected: {_selSplit[1]} - Already Completed");
                 Thread.Sleep(3000);
             }
-
+            _newString = $"{_selSplit[0]},{_selSplit[1]},{_selSplit[2]},{_selSplit[3]}";
+            list[index] = _newString;
 
         }
 

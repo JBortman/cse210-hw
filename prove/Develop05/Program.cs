@@ -28,6 +28,7 @@ class Program
             Console.WriteLine("4. Save Goals");
             Console.WriteLine("5. Load Previous Goals");
             Console.WriteLine("6. Quit");
+            Console.WriteLine("7. Clear Goals and Score");
             Console.Write("Your choice --> ");
             select = Console.ReadLine();
 
@@ -63,6 +64,9 @@ class Program
                     default:
                         break;
                 }
+                Console.Clear();
+                Console.WriteLine("Goal created!");
+                Console.WriteLine();
             }
 
             else if (select == "2")
@@ -101,10 +105,10 @@ class Program
                 Console.Clear();
             }
 
-            else if (select == "3")
+            else if (select == "3") // EXCEEDING REQUIREMENT: Listed goals with their index (and adjusted user input) before selecting goal to progress
             {
                 Simple ms = new Simple();
-                //Eternal me = new Eternal();
+                Eternal me = new Eternal();
                 Checklist mc = new Checklist();
                 int _count = 1;
                 Simple ss = new Simple();
@@ -153,7 +157,7 @@ class Program
                         break;
 
                     case "Eternal":
-
+                        _userPoints += me.MarkProgress(_goals, _index);
                         break;
 
                     case "Checklist":
@@ -182,10 +186,10 @@ class Program
                 Console.Clear();
             }
 
-            else if (select == "6")
+            else if (select == "6") // EXCEEDING REQUIREMENT: Confirm to save current goals before exiting
             {
                 string saveProg;
-                Console.Write("Save your progress? (y/n) --> ");
+                Console.Write("Save your progress before exiting? (y/n) --> ");
                 saveProg = Console.ReadLine();
                 if (saveProg == "y")
                 {
@@ -204,9 +208,33 @@ class Program
                 break;
             }
 
+            else if (select == "7") // EXCEEDING REQUIREMENT: Added a clear goals/score option
+            {
+                string saveProg;
+                Console.Write("Save your progress before clearing? (y/n) --> ");
+                saveProg = Console.ReadLine();
+                if (saveProg == "y")
+                {
+                    SaveLoad save = new SaveLoad();
+                    save.Save(_goals, _userPoints);
+                    Console.WriteLine("Progress saved");
+                    Console.WriteLine();
+                }
+                else if (saveProg == "n")
+                {
+                    Console.WriteLine();
+                }
+                _goals.Clear();
+                _userPoints = 0;
+                Console.WriteLine("Goals cleared, score reset");
+            }
+
             else
             {
+                Console.WriteLine();
                 Console.WriteLine("Invalid Entry, only select 1-6");
+                Thread.Sleep(2000);
+                Console.Clear();
             }
 
         }
