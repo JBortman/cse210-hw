@@ -5,17 +5,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<string> _goals = new List<string> {
-            "Simple,Test simple,250,0,False",
-            "Simple,Test simple2,100,1,True",
-            "Eternal,Test eternal,50,0,5,250",
-            "Checklist,Test checklist,50,0,5,250,False"
-        };
+        List<string> _goals = new List<string> { };
+
         string _newSimple;
         string _newEternal;
         string _newChecklist;
         string select = null;
-        int _userPoints = 75;
+        int _userPoints = 0;
+        int _index = 0;
 
         Console.Clear();
         Console.WriteLine("Welcome to Eternal Quest! Select from the menu below");
@@ -27,15 +24,16 @@ class Program
             Console.WriteLine("Menu Options:");
             Console.WriteLine("1. Create New Goal");
             Console.WriteLine("2. List Score and Current Goals");
-            Console.WriteLine("3. Save Goals");
-            Console.WriteLine("4. Load Previous Goals");
-            Console.WriteLine("5. Mark Complete");
+            Console.WriteLine("3. Mark Complete");
+            Console.WriteLine("4. Save Goals");
+            Console.WriteLine("5. Load Previous Goals");
             Console.WriteLine("6. Quit");
             Console.Write("Your choice --> ");
             select = Console.ReadLine();
 
             if (select == "1")
             {
+                Console.Clear();
                 Console.WriteLine("1. Simple");
                 Console.WriteLine("2. Eternal");
                 Console.WriteLine("3. Checklist");
@@ -66,6 +64,7 @@ class Program
                         break;
                 }
             }
+
             else if (select == "2")
             {
                 Console.Clear();
@@ -78,22 +77,22 @@ class Program
                 foreach (string line in _goals)
                 {
                     ws = line.Split(",");
-                    switch(ws[0])
+                    switch (ws[0])
                     {
-                    case "Simple":
-                        ss.ShowGoal(ws);
-                    break;
+                        case "Simple":
+                            ss.ShowGoal(ws);
+                            break;
 
-                    case "Eternal":
-                        se.ShowGoal(ws);
-                    break;
+                        case "Eternal":
+                            se.ShowGoal(ws);
+                            break;
 
-                    case "Checklist":
-                        sc.ShowGoal(ws);
-                    break;
-                    
-                    default:
-                        break;
+                        case "Checklist":
+                            sc.ShowGoal(ws);
+                            break;
+
+                        default:
+                            break;
                     }
                 }
 
@@ -101,23 +100,88 @@ class Program
                 Console.ReadLine();
                 Console.Clear();
             }
+
             else if (select == "3")
             {
-                SaveLoad save = new SaveLoad();
-                save.Save(_userPoints, _goals);
-                Console.WriteLine("Progress saved");
+                Simple ms = new Simple();
+                //Eternal me = new Eternal();
+                Checklist mc = new Checklist();
+                int _count = 1;
+                Simple ss = new Simple();
+                Eternal se = new Eternal();
+                Checklist sc = new Checklist();
                 Console.WriteLine();
-            }
-            else if (select == "4")
-            {
-                SaveLoad load = new SaveLoad();
-                load.Load(_userPoints, _goals);
+                string[] ws;
+
+                foreach (string line in _goals)
+                {
+                    ws = line.Split(",");
+                    switch (ws[0])
+                    {
+                        case "Simple":
+                            Console.Write($"{_count}. ");
+                            ss.ShowGoal(ws);
+                            _count++;
+                            break;
+
+                        case "Eternal":
+                            Console.Write($"{_count}. ");
+                            se.ShowGoal(ws);
+                            _count++;
+                            break;
+
+                        case "Checklist":
+                            Console.Write($"{_count}. ");
+                            sc.ShowGoal(ws);
+                            _count++;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                Console.Write("Which goal would you like to progress?: ");
+                _index = int.Parse(Console.ReadLine()) - 1;
+                Console.WriteLine();
+                ws = _goals[_index].Split(",");
+
+                switch (ws[0])
+                {
+                    case "Simple":
+                        _userPoints += ms.MarkProgress(_goals, _index);
+                        break;
+
+                    case "Eternal":
+
+                        break;
+
+                    case "Checklist":
+                        _userPoints += mc.MarkProgress(_goals, _index);
+                        break;
+
+                }
                 Console.Clear();
             }
+
+            else if (select == "4")
+            {
+                SaveLoad save = new SaveLoad();
+                save.Save(_goals, _userPoints);
+                Console.WriteLine("Progress saved");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+
             else if (select == "5")
             {
-                Console.WriteLine("Mark");
+                SaveLoad load = new SaveLoad();
+                _userPoints = load.Load(_goals);
+                Console.WriteLine("Load Successfull");
+                Thread.Sleep(1000);
+                Console.Clear();
             }
+
             else if (select == "6")
             {
                 string saveProg;
@@ -126,7 +190,7 @@ class Program
                 if (saveProg == "y")
                 {
                     SaveLoad save = new SaveLoad();
-                    save.Save(_userPoints, _goals);
+                    save.Save(_goals, _userPoints);
                     Console.WriteLine("Progress saved");
                     Console.WriteLine();
                 }
