@@ -181,7 +181,7 @@ class Program
             {
                 SaveLoad load = new SaveLoad();
                 _userPoints = load.Load(_goals);
-                Console.WriteLine("Load Successfull");
+                Console.WriteLine("Load Successful");
                 Thread.Sleep(1000);
                 Console.Clear();
             }
