@@ -21,14 +21,9 @@ public class Customer
         return _name;
     }
 
-    public bool GetInUSA()
-    {
+    public bool GetInUSA(){
         _inUSA = add.IfUSA();
         return _inUSA;
-    }
-
-    public string NewCustomer() {
-        return $"{_name}|{_address}|{_inUSA}";
     }
 
 }
